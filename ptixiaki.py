@@ -51,10 +51,38 @@ for model_index, model_data in enumerate(Ic_I):
     fig, ax = plt.subplots()
     for j, M_data in enumerate(model_data):
         ax.plot(M, M_data, label=f'Model {model_index + 1}, Data {j + 1}')
+    ##################################################### 0.07 line 
+    ax.axhline(y=0.07, color='r', linestyle='--')
+    
+    ax.annotate('0.07', xy=(M[0], 0.07), xytext=(M[0], 0.08),
+                )
+    
+    ax.fill_between(M, 0.07, 1, color='green', alpha=0.1)
+    ax.annotate('Allowed', xy=(2, 0.071), xytext=(1.9, 0.08),
+                )
+    
+    ax.fill_between(M, 0, 0.07, color='red', alpha=0.1)
+    ax.annotate('Forbidden', xy=(2, 0.065), xytext=(1.9, 0.05),
+                )
+    ###################################################### 0.016 line 
+    ax.axhline(y=0.016, color='r', linestyle='--')
+    ax.annotate('0.016', xy=(M[0], 0.016), xytext=(M[0], 0.02),
+                )
+    
+    ax.fill_between(M, 0.016, 1, color='blue', alpha=0.1)
+    ax.annotate('Allowed', xy=(2, 0.18), xytext=(1.9, 0.02),
+                )
+    
+    ax.fill_between(M, 0, 0.016, color='yellow', alpha=0.1)
+    ax.annotate('Forbidden', xy=(2, 0.01), xytext=(1.9, -0.02))
+                
 
     ax.set_xlabel('Pulsar Mass (Solar Masses)')
+
     ax.set_ylabel('Ic/I')
+
     ax.set_title(f'Model {model_index + 1}')
+
     ax.legend()
     plt.show()
 
