@@ -50,7 +50,7 @@ Ic_I= np.array(Ic_I)
 for model_index, model_data in enumerate(Ic_I):
     fig, ax = plt.subplots()
     for j, M_data in enumerate(model_data):
-        ax.plot(M, M_data, label=f'Model {model_index + 1}, Data {j + 1}')
+        ax.plot(M, M_data, label=f'Data {j + 1}')
     ##################################################### 0.07 line 
     ax.axhline(y=0.07, color='r', linestyle='--')
     
@@ -75,13 +75,15 @@ for model_index, model_data in enumerate(Ic_I):
     
     ax.fill_between(M, 0, 0.016, color='yellow', alpha=0.1)
     ax.annotate('Forbidden', xy=(2, 0.01), xytext=(1.9, -0.02))
+
+    ax.set_ylim(0, 0.5)
                 
 
     ax.set_xlabel('Pulsar Mass (Solar Masses)')
 
     ax.set_ylabel('Ic/I')
 
-    ax.set_title(f'Model {model_index + 1}')
+    
 
     ax.legend()
     plt.show()
